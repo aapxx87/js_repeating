@@ -300,10 +300,41 @@ btnTransfer.addEventListener('click', function (e) {
         console.log('transfer valid');
 
     }
+})
 
 
+
+
+
+
+btnLoan.addEventListener('click', function (e) {
+
+    e.preventDefault()
+
+    const amount = Number(inputLoanAmount.value)
+
+    if (
+        amount > 0 &&
+        currentAccount.movements.some(mov => mov >= amount / 10)
+    ) {
+
+        // Add movement
+        currentAccount.movements.push(amount)
+
+        // Update UI
+        updateUI(currentAccount)
+    }
+
+    inputLoanAmount.value = ''
 
 })
+
+
+
+
+
+
+
 
 btnClose.addEventListener('click', function (e) {
 
